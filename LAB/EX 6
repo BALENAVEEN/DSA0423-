@@ -1,0 +1,11 @@
+import numpy as np
+
+time = np.array([0, 1, 2, 3, 4])
+height = np.array([0, 5, 15, 20, 18])
+
+displacement = height[-1] - height[0]
+time_taken = time[-1] - time[0]
+
+avg_velocity = displacement / time_taken
+
+print("Average Velocity:", avg_velocity)
