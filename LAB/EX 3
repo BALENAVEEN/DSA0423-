@@ -1,0 +1,11 @@
+import pandas as pd
+
+sales_data = pd.DataFrame({
+    'Product': ['Pen', 'Book', 'Pencil'],
+    'Price': [10, 50, 5],
+    'Quantity': [3, 2, 10]
+})
+
+sales_data['Total Sales'] = sales_data['Price'] * sales_data['Quantity']
+
+print(sales_data)
