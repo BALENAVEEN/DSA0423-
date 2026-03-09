@@ -1,0 +1,43 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Sample dataset similar to your Excel data
+data = {
+    "Dish_Chosen": [
+        "Chicken Burger","Chicken Burger",
+        "Noodles","Noodles",
+        "Pasta Salad","Pasta Salad",
+        "Veggie Wrap","Veggie Wrap",
+        None
+    ],
+    
+    "Student_ID": [95,95,108,108,105,105,100,100,4],
+    
+    "Grade": [45,44,40,41,46,45,45,45,8]
+}
+
+df = pd.DataFrame(data)
+
+# Replace missing values
+df["Dish_Chosen"] = df["Dish_Chosen"].fillna("(blank)")
+
+# Create Pivot Table
+pivot = pd.pivot_table(
+    df,
+    values=["Student_ID","Grade"],
+    index="Dish_Chosen",
+    aggfunc="sum"
+)
+
+print("Pivot Table Output:\n")
+print(pivot)
+
+# Plot Chart
+pivot.plot(kind="bar")
+
+plt.title("Dish Chosen vs Student ID and Grade")
+plt.xlabel("Dish Chosen")
+plt.ylabel("Sum")
+plt.xticks(rotation=0)
+
+plt.show()
