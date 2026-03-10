@@ -1,0 +1,18 @@
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.stats import ttest_ind
+
+control = np.array([50, 52, 48, 47, 49])
+treatment = np.array([55, 58, 60, 57, 59])
+
+t_stat, p_value = ttest_ind(control, treatment)
+
+print("P-value:", p_value)
+
+groups = ['Control', 'Treatment']
+means = [control.mean(), treatment.mean()]
+
+plt.bar(groups, means)
+plt.title("Treatment vs Control")
+plt.ylabel("Average Score")
+plt.show()
