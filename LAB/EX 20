@@ -1,0 +1,15 @@
+import pandas as pd
+
+data = {
+'Name':['Messi','Ronaldo','Neymar','Mbappe'],
+'Age':[36,39,32,25],
+'Position':['Forward','Forward','Forward','Forward'],
+'Goals':[30,28,22,35],
+'Salary':[1000000,950000,800000,900000]
+}
+
+df = pd.DataFrame(data)
+
+df.to_csv("players.csv",index=False)
+
+print("CSV file created successfully")
