@@ -1,0 +1,40 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import string
+from collections import Counter
+
+# Load dataset
+data = pd.read_csv("data.csv")
+
+text = " ".join(data["feedback"])
+
+# Preprocessing
+text = text.lower()
+
+for p in string.punctuation:
+    text = text.replace(p, "")
+
+stop_words = {"the","and","is","in","to","of","a"}
+
+words = [word for word in text.split() if word not in stop_words]
+
+# Frequency count
+freq = Counter(words)
+
+N = int(input("Enter number of top words: "))
+
+top_words = freq.most_common(N)
+
+print("Top Words:")
+for word, count in top_words:
+    print(word, count)
+
+# Plot graph
+words = [w[0] for w in top_words]
+counts = [w[1] for w in top_words]
+
+plt.bar(words, counts)
+plt.title("Top Word Frequencies")
+plt.xlabel("Words")
+plt.ylabel("Frequency")
+plt.show()
