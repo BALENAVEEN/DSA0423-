@@ -1,0 +1,21 @@
+import pandas as pd
+
+data = {
+'City':['Chennai','Delhi','Mumbai'],
+'Temp':[32,35,30],
+'Min':[25,20,24],
+'Max':[38,42,34]
+}
+
+df = pd.DataFrame(data)
+
+df['Range'] = df['Max'] - df['Min']
+
+print("Mean Temperature:",df['Temp'].mean())
+print("Standard Deviation:",df['Temp'].std())
+
+print("City with highest range:")
+print(df.loc[df['Range'].idxmax()]['City'])
+
+print("Most consistent city:")
+print(df.loc[df['Temp'].std().argmin() if hasattr(df['Temp'].std(),'argmin') else 0]['City'])
