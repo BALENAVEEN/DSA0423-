@@ -1,0 +1,9 @@
+import numpy as np
+
+data = np.array([10,12,15,20,18,25,30])
+
+mean = np.mean(data)
+variance = np.var(data)
+
+print("Mean:", mean)
+print("Variance:", variance)
