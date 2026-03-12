@@ -1,0 +1,26 @@
+import pandas as pd
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.preprocessing import LabelEncoder
+
+data = {
+'age':[25,35,45,30],
+'income':[30000,50000,70000,40000],
+'browsing':[5,10,15,7],
+'device':['mobile','desktop','mobile','tablet'],
+'purchase':['yes','no','yes','no']
+}
+
+df = pd.DataFrame(data)
+
+le = LabelEncoder()
+df['device'] = le.fit_transform(df['device'])
+df['purchase'] = le.fit_transform(df['purchase'])
+
+X = df[['age','income','browsing','device']]
+y = df['purchase']
+
+model = DecisionTreeClassifier()
+model.fit(X,y)
+
+pred = model.predict([[28,35000,6,1]])
+print("Prediction:", pred)
