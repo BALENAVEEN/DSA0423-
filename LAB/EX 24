@@ -1,0 +1,9 @@
+import pandas as pd
+
+products = ['pen','book','pen','pencil','book','pen','eraser']
+df = pd.DataFrame({'product':products})
+
+freq = df['product'].value_counts()
+
+print("Frequency Distribution:\n", freq)
+print("\nMost Popular Product:", freq.idxmax())
